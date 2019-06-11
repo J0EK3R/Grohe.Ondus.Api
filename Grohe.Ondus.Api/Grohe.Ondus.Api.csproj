@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF5BA08C-BD41-4CD9-94D5-9E24C9CEE5E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Grohe.Ondus.Api</RootNamespace>
+    <AssemblyName>Grohe.Ondus.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Actions\LocationAction.cs" />
+    <Compile Include="Api\Actions\ApplianceAction.cs" />
+    <Compile Include="Api\Actions\RefreshTokenAction.cs" />
+    <Compile Include="Api\Actions\LoginAction.cs" />
+    <Compile Include="Api\Actions\AbstractionAction.cs" />
+    <Compile Include="Api\Actions\IAction.cs" />
+    <Compile Include="Api\Actions\RoomAction.cs" />
+    <Compile Include="Api\Client\ApiResponse.cs" />
+    <Compile Include="Api\Client\ApiClient.cs" />
+    <Compile Include="Api\Model\ApplianceCommand.cs" />
+    <Compile Include="Api\Model\ApplianceStatus.cs" />
+    <Compile Include="Api\Model\Authentication.cs" />
+    <Compile Include="Api\Model\BaseAppliance.cs" />
+    <Compile Include="Api\Model\BaseApplianceData.cs" />
+    <Compile Include="Api\Model\Location.cs" />
+    <Compile Include="Api\Model\RefreshTokenResponse.cs" />
+    <Compile Include="Api\Model\Address.cs" />
+    <Compile Include="Api\Model\Room.cs" />
+    <Compile Include="Api\Model\SenseAppliance.cs" />
+    <Compile Include="Api\Model\SenseApplianceData.cs" />
+    <Compile Include="Api\Model\SenseGuardAppliance.cs" />
+    <Compile Include="Api\Model\SenseGuardApplianceData.cs" />
+    <Compile Include="Api\OndusService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="java\api\actions\AbstractAction.java" />
+    <Content Include="java\api\actions\Action.java" />
+    <Content Include="java\api\actions\ApplianceAction.java" />
+    <Content Include="java\api\actions\LocationAction.java" />
+    <Content Include="java\api\actions\LoginAction.java" />
+    <Content Include="java\api\actions\RefreshTokenAction.java" />
+    <Content Include="java\api\actions\RoomAction.java" />
+    <Content Include="java\api\client\ApiClient.java" />
+    <Content Include="java\api\client\ApiResponse.java" />
+    <Content Include="java\api\model\Address.java" />
+    <Content Include="java\api\model\ApplianceCommand.java" />
+    <Content Include="java\api\model\ApplianceStatus.java" />
+    <Content Include="java\api\model\Authentication.java" />
+    <Content Include="java\api\model\BaseAppliance.java" />
+    <Content Include="java\api\model\BaseApplianceData.java" />
+    <Content Include="java\api\model\Location.java" />
+    <Content Include="java\api\model\RefreshTokenResponse.java" />
+    <Content Include="java\api\model\Room.java" />
+    <Content Include="java\api\model\SenseAppliance.java" />
+    <Content Include="java\api\model\SenseApplianceData.java" />
+    <Content Include="java\api\model\SenseGuardAppliance.java" />
+    <Content Include="java\api\model\SenseGuardApplianceData.java" />
+    <Content Include="java\api\OndusService.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
