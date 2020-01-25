@@ -9,6 +9,7 @@ namespace Grohe.Ondus.Api.Actions
   {
     #region Constants
     private const string LOGIN_URL = "/v2/iot/auth/users/login";
+    //private const string LOGIN_URL = "/v3/iot/oidc/login";
     #endregion
 
     #region class LoginRequest
@@ -33,9 +34,16 @@ namespace Grohe.Ondus.Api.Actions
       ApiResponse<Authentication> authResponse = getApiClient()
         .post<Authentication>(LOGIN_URL, new LoginRequest(username, password));
 
-      if (authResponse.getStatusCode() == 441)
+      switch (authResponse.getStatusCode())
       {
-        throw new ApplicationException("441 - Unauthorized");
+        case 200: // OK
+          break;
+        case 404:
+          throw new ApplicationException("404 - OldAPI");
+        case 441:
+          throw new ApplicationException("441 - Unauthorized");
+        default:
+          throw new ApplicationException($"{authResponse.getStatusCode()} - unhandled");
       }
 
       //return authResponse.getContent()
