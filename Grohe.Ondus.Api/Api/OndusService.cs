@@ -9,7 +9,7 @@ namespace Grohe.Ondus.Api
   public class OndusService
   {
     #region Constants
-    private const string BASE_URL = "https://idp-apigw.cloud.grohe.com";
+    private const string BASE_URL = "https://idp2-apigw.cloud.grohe.com";
     #endregion
 
     #region Fields
@@ -17,7 +17,7 @@ namespace Grohe.Ondus.Api
     private ApiClient apiClient;
     #endregion
 
-    #region static login(String username, String password)
+    #region static loginWebForm(String username, String password)
     /// <summary>
     /// Main entry point for the OndusService to obtain an initialized instance of it. When calling this method,
     /// the provided credentials will be checked against the GROHE Api and an access token will be saved in this
@@ -29,9 +29,11 @@ namespace Grohe.Ondus.Api
     /// <param name="username">The username of the GROHE account</param>
     /// <param name="password">The password of the GROHE account</param>
     /// <returns>An initialized instance of OndusService with the username or password</returns>
-    public static OndusService login(String username, String password)
+    public static OndusService loginWebForm(String username, String password)
     {
-      return login(username, password, new ApiClient(BASE_URL));
+      RefreshTokenResponse response = new WebFormLogin(BASE_URL, username, password).login();
+
+      return login(response.refreshToken);
     }
     #endregion
     #region static login(String refreshToken)
@@ -48,25 +50,6 @@ namespace Grohe.Ondus.Api
     public static OndusService login(String refreshToken)
     {
       return login(refreshToken, new ApiClient(BASE_URL));
-    }
-    #endregion
-    #region static login(String username, String password, ApiClient apiClient)
-    /// <summary>
-    /// private login
-    /// </summary>
-    /// <param name="username">The username of the GROHE account</param>
-    /// <param name="password">The password of the GROHE account</param>
-    /// <param name="apiClient">APIClient</param>
-    /// <returns>An initialized instance of OndusService with the username or password</returns>
-    private static OndusService login(String username, String password, ApiClient apiClient)
-    {
-      OndusService service = new OndusService();
-      service.apiClient = apiClient;
-
-      LoginAction loginAction = apiClient.getAction<LoginAction>();
-
-      apiClient.setToken(loginAction.getToken(username, password));
-      return service;
     }
     #endregion
     #region static login(String refreshToken, ApiClient apiClient)

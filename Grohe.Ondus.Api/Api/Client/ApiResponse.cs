@@ -31,8 +31,6 @@ namespace Grohe.Ondus.Api.Client
         else
         {
           extractContentFromResponse(httpResponse);
-          // ObjectMapper mapper = new ObjectMapper();
-          // mappedContent = mapper.readValue(content, targetClass);
           mappedContent = JsonConvert.DeserializeObject<T>(content);
         }
       }
@@ -46,16 +44,6 @@ namespace Grohe.Ondus.Api.Client
     #region extractContentFromResponse(HttpResponse httpResponse)
     private void extractContentFromResponse(HttpResponseMessage httpResponse)
     {
-      //BufferedInputStream bis = new BufferedInputStream(httpResponse.getEntity().getContent());
-      //ByteArrayOutputStream buf = new ByteArrayOutputStream();
-      //int result = bis.read();
-      //while (result != -1)
-      //{
-      //  buf.write((byte)result);
-      //  result = bis.read();
-      //}
-      //this.content = buf.toString();
-
       Task<string> httpRequest = httpResponse.Content.ReadAsStringAsync();
       this.content = httpRequest.Result;
     }
@@ -82,10 +70,9 @@ namespace Grohe.Ondus.Api.Client
       E contentForTargetClass = null;
       try
       {
-        // contentForTargetClass = new ObjectMapper().readValue(this.content, targetClass);
         contentForTargetClass = JsonConvert.DeserializeObject<E>(this.content);
       }
-      catch (Exception ignored)
+      catch (Exception)
       {
       }
       return contentForTargetClass;

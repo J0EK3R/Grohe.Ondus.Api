@@ -8,12 +8,11 @@ namespace Grohe.Ondus.Api.Test
   {
     static void Main(string[] args)
     {
-      // The username of the GROHE account
-      string userName = "";
-      // The password of the GROHE account
-      string password = "";
+      
+      string userName = ""; // The username of the GROHE account
+      string password = ""; // The password of the GROHE account
 
-      OndusService ondusService = OndusService.login(userName, password);
+      OndusService ondusService = OndusService.loginWebForm(userName, password);
 
       //string refresh = ondusService.refreshAuthorization();
       //DateTime expireDate = ondusService.authorizationExpiresAt();

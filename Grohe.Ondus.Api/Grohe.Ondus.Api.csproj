@@ -47,7 +47,6 @@
     <Compile Include="Api\Actions\LocationAction.cs" />
     <Compile Include="Api\Actions\ApplianceAction.cs" />
     <Compile Include="Api\Actions\RefreshTokenAction.cs" />
-    <Compile Include="Api\Actions\LoginAction.cs" />
     <Compile Include="Api\Actions\AbstractionAction.cs" />
     <Compile Include="Api\Actions\IAction.cs" />
     <Compile Include="Api\Actions\RoomAction.cs" />
@@ -55,7 +54,6 @@
     <Compile Include="Api\Client\ApiClient.cs" />
     <Compile Include="Api\Model\ApplianceCommand.cs" />
     <Compile Include="Api\Model\ApplianceStatus.cs" />
-    <Compile Include="Api\Model\Authentication.cs" />
     <Compile Include="Api\Model\BaseAppliance.cs" />
     <Compile Include="Api\Model\BaseApplianceData.cs" />
     <Compile Include="Api\Model\Location.cs" />
@@ -66,6 +64,7 @@
     <Compile Include="Api\Model\SenseApplianceData.cs" />
     <Compile Include="Api\Model\SenseGuardAppliance.cs" />
     <Compile Include="Api\Model\SenseGuardApplianceData.cs" />
+    <Compile Include="Api\WebFormLogin.cs" />
     <Compile Include="Api\OndusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
